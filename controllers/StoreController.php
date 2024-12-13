@@ -105,12 +105,15 @@ class StoreController extends Controller
     {
         $model = $this->findModel($id);
 
+
+        $model->category_ids =array_column($model->storeCategories , 'id' );
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'categories' => ArrayHelper::map(Category::find()->select(['id', 'name_en'])->asArray()->all(), 'id', 'name_en')
         ]);
     }
 
