@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="store-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,16 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+
             'code',
+            [
+                "attribute" => "category_ids",
+                "value" => function ($model) {
+                    return join(', ', array_column($model?->storeCategories, 'name_en'));
+                }
+            ],
             'name_en',
             'name_ar',
             'desc_en:ntext',
             'img_ar',
             'status',
             'created_at',
-            'updated_at',
-            'deleted_at',
         ],
     ]) ?>
 

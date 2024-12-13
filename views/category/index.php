@@ -14,13 +14,9 @@ $this->title = Yii::t('app', 'Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('app', 'Create Category'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -35,12 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'desc_ar:ntext',
             //'img_en',
             //'img_ar',
-            //'status',
-            //'show_in_home',
-            //'sort_order',
-            //'created_at',
-            //'updated_at',
-            //'deleted_at',
+            'status',
+            'show_in_home',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Category $model, $key, $index, $column) {

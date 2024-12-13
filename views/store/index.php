@@ -14,9 +14,6 @@ $this->title = Yii::t('app', 'Stores');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="store-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('app', 'Create Store'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -30,16 +27,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'code',
+            [
+                "attribute" => "category_ids",
+                "value" => function ($model) {
+                    return join(', ', array_column($model?->storeCategories, 'name_en'));
+                }
+            ],
             'name_en',
             'name_ar',
             'desc_en:ntext',
-            //'img_ar',
-            //'status',
-            //'created_at',
-            //'updated_at',
-            //'deleted_at',
+            'desc_ar:ntext',
+            'status',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Store $model, $key, $index, $column) {

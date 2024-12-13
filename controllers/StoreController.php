@@ -104,10 +104,18 @@ class StoreController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->category_ids = array_column($model->storeCategories, 'id');
+        if ($this->request->isPost && $model->load($this->request->post())) {
 
+            if ($model->save()) {
 
-        $model->category_ids =array_column($model->storeCategories , 'id' );
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+                $model->unlinkAll('storeCategories', true);
+                $categories = Category::findAll($model->category_ids);
+                foreach ($categories as $category) {
+                    $model->link('storeCategories', $category);
+                }
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

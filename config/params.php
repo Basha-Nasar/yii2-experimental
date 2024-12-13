@@ -14,6 +14,13 @@ return [
                 'css' => ['toastr/toastr.min.css'],
                 'js' => ['toastr/toastr.min.js']
             ],
+            'select' => [
+                'css' => [
+                    'select2/css/select2.css',
+                    'select2-bootstrap4-theme/select2-bootstrap4.css'
+                ],
+                'js' => ['select2/js/select2.full.js'],
+            ],
         ]
     ]
 ];

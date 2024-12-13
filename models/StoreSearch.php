@@ -18,7 +18,7 @@ class StoreSearch extends Store
     {
         return [
             [['id'], 'integer'],
-            [['code', 'name_en', 'name_ar', 'desc_en', 'img_ar', 'status', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
+            [['code', 'name_en', 'name_ar', 'desc_en', 'desc_ar', 'img_ar', 'img_en', 'status', 'created_at', 'updated_at', 'deleted_at'], 'safe'],
         ];
     }
 

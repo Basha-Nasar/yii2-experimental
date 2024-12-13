@@ -40,7 +40,7 @@ class Store extends \yii\db\ActiveRecord
     {
         return [
             [['code', 'status'], 'required'],
-            [['desc_en'], 'string'],
+            [['desc_en', 'desc_ar'], 'string'],
             [['created_at', 'updated_at', 'deleted_at'], 'safe'],
             ['category_ids', 'each', 'rule' => ['integer']],
             [['code', 'name_en', 'name_ar', 'img_ar', 'status'], 'string', 'max' => 255],
@@ -59,6 +59,8 @@ class Store extends \yii\db\ActiveRecord
             'name_en' => Yii::t('app', 'Name En'),
             'name_ar' => Yii::t('app', 'Name Ar'),
             'desc_en' => Yii::t('app', 'Desc En'),
+            'desc_ar' => Yii::t('app', 'Desc Ar'),
+            'img_en' => Yii::t('app', 'Img En'),
             'img_ar' => Yii::t('app', 'Img Ar'),
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
