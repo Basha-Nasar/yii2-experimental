@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-olive accent-olive text-sm ">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="<?= $assetDir ?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -30,10 +30,17 @@
                         'items' => [
                             ['label' => 'Category', 'url' => ["category/index"]],
                             ['label' => 'Store', 'url' => ["store/index"]],
-                            
+                            ['label' => 'Import', 'url' => ["store/index"]],
+
                         ]
                     ],
                 ],
+                "options" => [
+                    'class' => 'nav nav-pills nav-compact nav-sidebar flex-column',
+                    'data-widget' => 'treeview',
+                    'role' => 'menu',
+                    'data-accordion' => 'false'
+                ]
             ]);
             ?>
         </nav>
